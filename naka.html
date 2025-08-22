@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SAT Linear Practice Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: white;
+      padding: 30px;
+      text-align: center;
+      color:#eef2f3;
+    }
+    .quiz-container {
+      background:  #4A90E2;
+      color:white;
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    #question {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quiz-container">
+
+<h2>SAT Linear Algebra Quiz</h2>
+    <div id="question">Loading question...</div>
+    <input type="text" id="answerInput" placeholder="Enter your answer">
+    <br>
+    <button onclick="checkAnswer()">Submit</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const questions = [
+    {
+        q: "1. Sarah earns 15 per hour. If she works h hours, how much will she earn? (Write an expression)",
+        a: "15h"
+      },
+{
+        q: "2. A car rental costs40 per day plus a $60 fee. Write the total cost (C) as a function of days (d).",
+        a: "C = 40d + 60"
+      },
+{
+
+q: "3. A student needs at least 70 points to pass. If she has already scored 45, what inequality shows how many more points (x) she needs?",
+        a: "45 + x ≥ 70"
+      },
+{
+        q: "4. A line passes through (0, 2) and has a slope of 5. Write its equation.",
+        a: "y = 5x + 2"
+      },
+{
+        q: "5. Mike is twice as old as John. The sum of their ages is 36. Find John's age (x) using an equation.",
+        a: "x + 2x = 36"
+}
+    ];
+
+
+    let index = 0;
+    let score = 0;
+
+    function showQuestion() {
+      if (index < questions.length) {
+        document.getElementById("question").textContent = questions[index].q;
+        document.getElementById("answerInput").value = "";
+        document.getElementById("result").textContent = "";
+      } else {
+        document.getElementById("question").textContent = `Quiz complete! Your score: ${score} / ${questions.length}`;
+        document.getElementById("answerInput").style.display = "none";
+        document.querySelector("button").style.display = "none";
+      }
+    }
+
+    function checkAnswer() {
+      const userAnswer = document.getElementById("answerInput").value.trim();
+      const correctAnswer = questions[index].a.trim();
+      if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+        score++;
+        document.getElementById("result").textContent = "✅ Correct!";
+      } else {
+        document.getElementById("result").textContent = `❌ Incorrect. Correct answer: ${correctAnswer}`;
+      }
+      index++;
+      setTimeout(showQuestion, 1500);
+    }
+
+    showQuestion();
+  </script>
+
+</body>
+</html>

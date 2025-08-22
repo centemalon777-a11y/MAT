@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+      <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sat Prep</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
+      color:  #4A90E2;;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    h2, h3 {
+      color: #4A90E2;;
+    }
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 20px 0;
+      justify-content: center;
+      max-width: 600px;
+      width: 100%;
+    }
+    button {
+      background-color: #4A90E2;;
+      color: #ecf0f1;
+      border: none;
+      border-radius: 6px;
+      padding: 15px 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      flex: 1 1 150px;
+      max-width: 180px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    button:hover {
+      background-color: #1195c9;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+    }
+    .quizTypeSection {
+      display: none;
+      width: 100%;
+      max-width: 700px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Select Subject</h2>
+  <div class="button-group" id="subjectButtons">
+    <button onclick="selectSubject('bible')">MATH</button>
+    <button onclick="selectSubject('physics')">Reading and writing</button>
+
+  </div>
+
+  <div id="quizTypeSection">
+    <h3>SAT PREP</h3>
+    <div class="button-group" id="quizButtons"></div>
+  </div>
+
+<script>
+  const quizOptions = {
+    bible: [
+      { text: 'linear equation', value: 'men.html' },
+      { text: 'linear equation 2', value: 'hhju.html' },
+         { text: 'linear equation 3', value: 'hoy.html' },
+            { text: 'linear equation 4', value: 'rose.html' },
+              { text: 'linear equation 5', value: 'sake.html' },
+                   { text: 'linear equation 6', value: 'naka.html' },
+                        { text: 'linear equation 7', value: 'make.html' },
+                            { text: 'linear equation 8', value: 'mac.html' }
+    ],
+
+  };
+
+  function selectSubject(subject) {
+    const quizButtonsDiv = document.getElementById('quizButtons');
+    quizButtonsDiv.innerHTML = ''; // Clear previous buttons
+
+    if (quizOptions[subject]) {
+      quizOptions[subject].forEach(quiz => {
+        const btn = document.createElement('button');
+        btn.textContent = quiz.text;
+        btn.onclick = () => {
+          window.location.href = quiz.value;
+        };
+        quizButtonsDiv.appendChild(btn);
+      });
+      document.getElementById('quizTypeSection').style.display = 'block';
+    }
+  }
+</script>
+
+</body>
+</html>

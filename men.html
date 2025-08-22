@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>sat prep</title>
+  <style>
+      body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: WHITE; 
+      color:  #4A90E2;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .quiz-container {
+      background-color:#e8f5e9;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 600px;
+      margin: 40px auto;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color:  #4A90E2;
+      text-align: center;
+    }
+
+
+h1 {
+  text-align: center;
+  color:  #4A90E2; 
+}
+
+button {
+   background-color: #4A90E2;
+   color: white;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+
+
+button:hover {
+background-color: #d9e6ff;
+}
+    .question { font-size: 1.2em; margin-bottom: 20px; }
+    .options { list-style: none; padding: 0; }
+    .options li { margin-bottom: 10px; }
+   
+    button:disabled { background: #ccc; }
+    .score { text-align: center; font-size: 1.1em; margin-top: 20px; }
+  </style>
+</head>
+<body>
+
+
+  <div class="question-container">
+    <h1>Maths</h1>
+    <h2>linear equation, linear function, linear relationship</h2>
+    <div id="quiz">
+      <div class="question" id="question"></div>
+      <ul class="options" id="options"></ul>
+     <button id="nextBtn">Next</button>
+  
+<button id="submitBtn">Submit</button>
+      <div class="score" id="score"></div>
+    <div id="timer"></div>
+
+    </div>
+
+  <script src="men.js"></script>
+</body>
+</html>

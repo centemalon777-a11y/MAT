@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SAT Linear Practice Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: white;
+      padding: 30px;
+      text-align: center;
+      color:#eef2f3;
+    }
+    .quiz-container {
+      background:  #4A90E2;
+      color:white;
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    #question {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quiz-container">
+
+<h2>SAT Linear Algebra Quiz</h2>
+    <div id="question">Loading question...</div>
+    <input type="text" id="answerInput" placeholder="Enter your answer">
+    <br>
+    <button onclick="checkAnswer()">Submit</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const questions = [
+    { q: "1. Solve: 2x - 5 = 3x + 1", a: "x = -6" },
+      { q: "2. Solve: 5(x - 2) = 3(2x + 1)", a: "x = 1" },
+      { q: "3. Solve: 3(x + 2) = 2(x - 1) + 10", a: "x = 0" },
+      { q: "4. y = 2x - 7. What is the y-intercept?", a: "-7" },
+      { q: "5. Find y-intercept: 4x - 3y = 12", a: "-4" },
+      { q: "6. f(x) = 2x - 4. Find f(3)", a: "2" },
+      { q: "7. f(x) = -x + 6. Find x when f(x) = 0", a: "6" },
+
+{ q: "8. f(x)=5x+3, g(x)=2x-1. Find (f+g)(x)", a: "7x + 2" },
+      { q: "9. Slope of line through (2,5) & (4,9)?", a: "2" },
+      { q: "10. f(2)=10, f(4)=18. f(x)=ax+b. Find a", a: "4" },
+      { q: "11. Solve: 3x - 7 < 2x + 5", a: "x < 12" },
+      { q: "12. Solve: -2(x - 4) ≥ 6", a: "x ≤ 1" },
+      { q: "13. x ∈ [70, 90). Which is true?", a: "x = 89" },
+      { q: "14. Solve: -4 < 2x + 6 ≤ 10", a: "-5 < x ≤ 2" },
+      { q: "15. 4x - 3 > 5x + 2", a: "x < -5" }
+    ];
+
+    let index = 0;
+    let score = 0;
+
+    function showQuestion() {
+      if (index < questions.length) {
+        document.getElementById("question").textContent = questions[index].q;
+        document.getElementById("answerInput").value = "";
+        document.getElementById("result").textContent = "";
+      } else {
+        document.getElementById("question").textContent = `Quiz complete! Your score: ${score} / ${questions.length}`;
+        document.getElementById("answerInput").style.display = "none";
+        document.querySelector("button").style.display = "none";
+      }
+    }
+
+    function checkAnswer() {
+      const userAnswer = document.getElementById("answerInput").value.trim();
+      const correctAnswer = questions[index].a.trim();
+      if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+        score++;
+        document.getElementById("result").textContent = "✅ Correct!";
+      } else {
+        document.getElementById("result").textContent = `❌ Incorrect. Correct answer: ${correctAnswer}`;
+      }
+      index++;
+      setTimeout(showQuestion, 1500);
+    }
+
+    showQuestion();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SAT Linear Practice Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: white;
+      padding: 30px;
+      text-align: center;
+      color:#eef2f3;
+    }
+    .quiz-container {
+      background:  #4A90E2;
+      color:white;
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    #question {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quiz-container">
+
+<h2>SAT Linear Algebra Quiz</h2>
+    <div id="question">Loading question...</div>
+    <input type="text" id="answerInput" placeholder="Enter your answer">
+    <br>
+    <button onclick="checkAnswer()">Submit</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const questions = [
+  { q: "1. Solve: 3x - 7 = 2x + 4", a: "x = 11" },
+      { q: "2. Solve: 2(3x - 5) = 4x + 2", a: "x = 6" },
+      { q: "3. If f(x) = 4x - 9, find f(3)", a: "3" },
+
+{ q: "4. The line passes through (2, 5) and (6, 13). What is the slope?", a: "2" },
+      { q: "5. Find x: (x/2) + (x/3) = 10", a: "x = 12" },
+      { q: "6. Solve: 2x + 3 < 5x - 6", a: "x > 3" },
+      { q: "7. A line has equation y = -3x + b. If it passes through (2, 1), find b.", a: "7" },
+      { q: "8. Solve: 5(x - 2) ≥ 3x + 4", a: "x ≥ 7" },
+      { q: "9. f(x) = x² - 3x + 2. Is this linear?", a: "No" },
+      { q: "10. What is the x-intercept of y = 2x - 6?", a: "x = 3" }
+  
+    ];
+
+    let index = 0;
+    let score = 0;
+
+    function showQuestion() {
+      if (index < questions.length) {
+        document.getElementById("question").textContent = questions[index].q;
+        document.getElementById("answerInput").value = "";
+        document.getElementById("result").textContent = "";
+      } else {
+        document.getElementById("question").textContent = `Quiz complete! Your score: ${score} / ${questions.length}`;
+        document.getElementById("answerInput").style.display = "none";
+        document.querySelector("button").style.display = "none";
+      }
+    }
+
+    function checkAnswer() {
+      const userAnswer = document.getElementById("answerInput").value.trim();
+      const correctAnswer = questions[index].a.trim();
+      if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+        score++;
+        document.getElementById("result").textContent = "✅ Correct!";
+      } else {
+        document.getElementById("result").textContent = `❌ Incorrect. Correct answer: ${correctAnswer}`;
+      }
+      index++;
+      setTimeout(showQuestion, 1500);
+    }
+
+    showQuestion();
+  </script>
+
+</body>
+</html>
